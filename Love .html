@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love is fun</title>
+    <link rel="stylesheet" href="Style.css">
+  
+</head>
+<body>
+    <h1 class="title">Universe</h1>
+    <div class="main">
+        <h1 class="question">Do you love me?</h1>
+        <div class="buttons">
+            <button class="btn" id="yesButton" onclick="nextPage()">Yes</button>
+            <button class="nobtn" id="noButton" onmouseover="moveButton()" onclick="moveButton()">No</button>
+        </div>
+        
+    </div>
+    <p class="description"></p>
+       
+    <button id="loveBtn" class="btn">Click me to see the magic happen!</button>
+    <div id="loveMessage" class="message">First Love Yourself!</div>
+    <div id="loveBar" class="progress-bar">Love is a beautiful and powerful force that can change lives. It brings joy, happiness, and fulfillment to those who love it. But it also brings pain, sadness, and regret. Remember, love is a journey, not a destination.</div>
+    <script>
+        function nextPage() {
+            window.location.href = "yes.html";
+        }
+
+        function moveButton() {
+            const noButton = document.getElementById('noButton');
+            const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
+            noButton.style.position = 'absolute';
+            noButton.style.left = `${x}px`;
+            noButton.style.top = `${y}px`;
+        }
+
+        document.getElementById('loveBtn').addEventListener('click', function() {
+            document.getElementById('loveMessage').style.display = 'block';
+            document.getElementById('loveBar').style.display = 'block';
+            let width = 0;
+            const interval = setInterval(function() {
+                if (width >= 100) {
+                    clearInterval(interval);
+                } else {
+                    width++;
+                    document.getElementById('loveBar').style.width = width + '%';
+                    document.getElementById('loveBar').style.height = '20px';
+                    document.getElementById('loveBar').style.backgroundColor = 'pink';
+                }
+            }, 50);
+        });
+    </script>
+</body>
+</html>
